@@ -9,6 +9,7 @@ void sendTelemetryMessage()
     DynamicJsonDocument doc(1024);
     doc["Protocol"] = "Device.3";
     doc["MessageType"] = "Telemetry";
+    doc["Data"]["valveOpen"] = false;
     doc["Data"]["light"] = analogRead(WIO_LIGHT);
     _telemetry_iothub_client.SendMessage(doc);
 }
